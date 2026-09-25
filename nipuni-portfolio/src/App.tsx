@@ -29,7 +29,7 @@ function App() {
             Nipuni <span>Amanda</span>
           </h1>
 
-          <h2>Software Engineer | Frontend & Full-Stack Developer</h2>
+          <h2>Software Engineer | Full-Stack Developer</h2>
 
           <p className="hero-description">
             BICT (Hons) Software Technology graduate with Second Upper Class
@@ -58,7 +58,7 @@ function App() {
           </div>
         </div>
 
-        <div className="hero-decoration">
+        {/* <div className="hero-decoration">
           <div className="code-card">
             <span>&lt;</span>
             <strong>Software</strong>
@@ -68,7 +68,7 @@ function App() {
             <strong>Engineer</strong>
             <span>/&gt;</span>
           </div>
-        </div>
+        </div> */}
       </section>
 
       {/* About */}
