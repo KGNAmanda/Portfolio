@@ -1,6 +1,10 @@
 {
   "dependencies": {
     "@vitejs/plugin-react": "^4.3.4",
+<<<<<<< HEAD
     "vite": "^6.4.3"
+=======
+    "vite": "^6.3.5"
+>>>>>>> 5f36dd08518bbc1d5a8f9351e1d6198d76e94d5a
   }
 }
