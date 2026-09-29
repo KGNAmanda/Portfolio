@@ -1,4 +1,41 @@
 import "./App.css";
+import profileImage from "./images/profile-image.png";
+import researchRecommend from "./images/reno1.png";
+import researchOptimizer from "./images/reno2.png";
+import researchMap from "./images/reno3.png";
+import researchSpeedTest from "./images/reno4.png";
+import { useState } from "react";
+import cvFile from "./K.G.N.Amanda CV(new).pdf";
+import webDesignCertificate from "./Web_Design_for_Beginners_E-Certificate.pdf";
+import frontendCertificate from "./Front-End_Web_Development_E-Certificate.pdf";
+import pythonCertificate from "./Python for Beginners.pdf";
+import cyberSecurityCertificate from "./Cyber Security course.pdf";
+import isc2AccessControlCertificate from "./ISC2 Certificates/Access Control Concepts Certifcate.pdf";
+import isc2NetworkSecurityCertificate from "./ISC2 Certificates/Network Security Certificate.pdf";
+import isc2SecurityOperationsCertificate from "./ISC2 Certificates/Security Operations Certificate.pdf";
+
+function ProjectDescription({ children }: { children: string }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const canExpand = children.trim().length > 120;
+
+  return (
+    <>
+      <p className={`project-description${isExpanded ? " is-expanded" : ""}`}>
+        {children}
+      </p>
+      {canExpand && (
+        <button
+          className="project-more-button"
+          type="button"
+          aria-expanded={isExpanded}
+          onClick={() => setIsExpanded((expanded) => !expanded)}
+        >
+          {isExpanded ? "See less" : "See more"}
+        </button>
+      )}
+    </>
+  );
+}
 
 function App() {
   return (
@@ -6,7 +43,7 @@ function App() {
       {/* Navigation */}
       <nav className="navbar">
         <div className="nav-container">
-          <div className="logo">NA.</div>
+          <div className="logo">S.Engineer</div>
 
           <div className="nav-links">
             <a href="#home">Home</a>
@@ -15,10 +52,19 @@ function App() {
             <a href="#experience">Experience</a>
             <a href="#projects">Projects</a>
             <a href="#research">Research</a>
+            <a href="#certificates">Certificates</a>
             <a href="#contact">Contact</a>
           </div>
         </div>
       </nav>
+
+      <a
+        href={cvFile}
+        className="download-cv-button"
+        download="Nipuni-Amanda-CV.pdf"
+      >
+        Download CV
+      </a>
 
       {/* Hero */}
       <section id="home" className="hero">
@@ -46,6 +92,7 @@ function App() {
             <a href="#contact" className="secondary-button">
               Contact Me
             </a>
+
           </div>
 
           <div className="social-links">
@@ -61,8 +108,8 @@ function App() {
         <div className="hero-decoration">
           <div className="profile-card">
             <img
-              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80"
-              alt="Nipuni profile"
+              src={profileImage}
+              alt="Nipuni Amanda"
               className="profile-image"
             />
           </div>
@@ -96,7 +143,7 @@ function App() {
             </p>
           </div>
 
-          <div className="about-card">
+          {/* <div className="about-card">
             <div>
               <span>01</span>
               <h3>Frontend</h3>
@@ -114,7 +161,7 @@ function App() {
               <h3>AI & Research</h3>
               <p>AI-powered solutions</p>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -195,24 +242,28 @@ function App() {
 
               <ul>
                 <li>
-                  Developed frontend features using React.js, TypeScript and
-                  Ant Design.
+                  Developed and enhanced customer-facing features for the CX Info (CXI) portal using React.js with TypeScript and Ant Design.
                 </li>
                 <li>
-                  Developed REST APIs using Java and Spring Boot.
+                  Built and integrated RESTful APIs using Java Spring Boot (Spring MVC, Spring Data JPA, Spring Security).
                 </li>
                 <li>
-                  Worked with microservice architecture and Telco BSS APIs.
+                  Worked within micro service architecture supporting prepaid, postpaid, and enterprise customer segments.
                 </li>
                 <li>
-                  Investigated production issues using Kibana and Postman.
+                  Implemented and fixed security enhancements including Content Security Policies (CSP) and sensitive data handling improvements.
                 </li>
                 <li>
-                  Gained exposure to AWS EKS, Kubernetes and Jenkins CI/CD.
+                  Resolved production defects by analyzing logs via Kibana and validating API flows using Postman.
                 </li>
                 <li>
-                  Participated in Agile/Scrum development and code reviews.
+                  Improved code quality by addressing SonarQube Quality Gate issues, reducing code smells and vulnerabilities.
                 </li>
+                <li>Participated in backend integrations with Telco BSS systems via REST APIs.</li>
+                <li>Collaborated in Agile/Scrum environment with cross-functional teams across multiple NBC phases. </li>
+                <li>Gained exposure to AWS EKS, Kubernetes deployments (Rolling & Blue-Green) and CI/CD processes via Jenkins.</li>
+                <li>Contributed to version control workflows using Git & GitLab branching strategies.</li>
+                <li>Automation testing Via Selenium</li>
               </ul>
             </div>
           </div>
@@ -229,14 +280,19 @@ function App() {
 
               <ul>
                 <li>
-                  Developed frontend and backend features for an AI-powered
-                  jewellery customization platform.
+                  Contributed to the development of the World's First Online Jewellery Customization and Instant Buying AI Platform.
                 </li>
                 <li>
-                  Worked on testing, debugging and performance improvements.
+                  Designed and developed full-stack web application features using modern web technologies. </li>
+                <li>
+                  Built and maintained both frontend and backend components of the platform.
                 </li>
                 <li>
-                  Contributed to an AI-powered instant purchasing solution.
+                  Assisted in implementing AI-powered features for jewellery customization and instant purchasing. </li>
+                <li>
+                  Performed testing, debugging, and performance optimization to improve application quality and reliability. </li>
+                <li>
+                  Collaborated with the development team to deliver project milestones within the contract period. AI-powered features for jewelry customization and instant purchasing.
                 </li>
               </ul>
             </div>
@@ -247,79 +303,140 @@ function App() {
       {/* Projects */}
       <section id="projects" className="section dark-section">
         <div className="section-title">
-          <p>WHAT I HAVE BUILT</p>
-          <h2>Featured Projects</h2>
+          <p>EXPERIENCE & SELECTED WORK</p>
+          <h2>Projects</h2>
         </div>
 
-        <div className="projects-grid">
-          <div className="project-card">
-            <div className="project-number">01</div>
-
-            <h3>Intelligent LTE Band Recommendation System</h3>
-
-            <p>
-              An intelligent Android application that analyzes crowdsourced
-              spatio-temporal network performance data to recommend suitable
-              LTE bands.
-            </p>
-
-            <div className="tags">
-              <span>Kotlin</span>
-              <span>Jetpack Compose</span>
-              <span>Supabase</span>
-              <span>PostgreSQL</span>
-              <span>AI</span>
-            </div>
-
-            <a href="#" className="project-link">
-              View Project →
-            </a>
+        <div className="project-group">
+          <div className="project-group-heading">
+            <span>01</span>
+            <h3>Professional Experience</h3>
           </div>
+          <div className="projects-grid">
+            <article className="project-card">
+              <h3>NBC CXI — Customer Experience Information Portal</h3>
+              <p className="project-org">ADL Malaysia / CelcomDigi</p>
+              <div className="tags">
+                <span>React.js</span><span>TypeScript</span><span>Ant Design</span><span>Java</span><span>Spring Boot</span><span>Microservices</span><span>AWS EKS</span><span>Kubernetes</span><span>Jenkins</span>
+              </div>
+              <ProjectDescription>
+                Developed customer-facing CXI portal features and REST APIs for
+                prepaid, postpaid, and enterprise systems. Worked with
+                microservices, security enhancements, production debugging,
+                SonarQube, Git/GitLab, CI/CD, Kubernetes, and AWS EKS.
+              </ProjectDescription>
+            </article>
 
-          <div className="project-card">
-            <div className="project-number">02</div>
-
-            <h3>AI Jewellery Customization Platform</h3>
-
-            <p>
-              An AI-powered platform for jewellery customization and instant
-              purchasing, including frontend and backend development.
-            </p>
-
-            <div className="tags">
-              <span>React</span>
-              <span>AI</span>
-              <span>Frontend</span>
-              <span>Backend</span>
-            </div>
-
-            <a href="#" className="project-link">
-              View Project →
-            </a>
+            <article className="project-card">
+              <h3>AI Jewellery Customization Platform</h3>
+              <p className="project-org">CH Software Solutions / CH Global</p>
+              <div className="tags">
+                <span>React.js</span><span>Node.js</span><span>AI</span><span>Full Stack</span>
+              </div>
+              <ProjectDescription>
+                Contributed to an AI-powered jewellery customization and
+                instant-buying platform, developing frontend and backend
+                features while supporting testing, debugging, and performance
+                improvements.
+              </ProjectDescription>
+            </article>
           </div>
+        </div>
 
-          <div className="project-card">
-            <div className="project-number">03</div>
+        <div className="project-group">
+          <div className="project-group-heading">
+            <span>02</span>
+            <h3>University Projects</h3>
+          </div>
+          <div className="projects-grid">
+            <article className="project-card">
+              <h3>Medical Center Management System</h3>
+              <p className="project-org">Group Project · 3rd Year</p>
+              <div className="tags">
+                <span>React.js</span><span>Node.js</span><span>Express.js</span><span>MongoDB</span><span>Tailwind CSS</span>
+              </div>
+              <ProjectDescription>
+                A web-based medical center management system designed to support
+                patient management, appointment scheduling, and medication
+                tracking.
+              </ProjectDescription>
+            </article>
 
-            <h3>NBC CXI Application</h3>
+            <article className="project-card">
+              <h3>Bus Fleet Management System</h3>
+              <div className="tags">
+                <span>React.js</span><span>Node.js</span><span>Express.js</span><span>MongoDB</span><span>JWT</span><span>Git</span>
+              </div>
+              <ProjectDescription>
+                Full-stack system for managing buses, drivers, routes,
+                schedules, fuel, maintenance, authentication, CRUD operations,
+                and PDF report generation.
+              </ProjectDescription>
+            </article>
 
-            <p>
-              Customer experience application developed during my software
-              engineering internship, integrating frontend features with
-              backend Telco services.
-            </p>
+            <article className="project-card">
+              <h3>Student Registration Management System</h3>
+              <p className="project-org">Individual Project</p>
+              <div className="tags">
+                <span>C#</span><span>Windows Forms</span><span>SQL Server</span><span>Visual Studio</span>
+              </div>
+              <ProjectDescription>
+                Desktop-based student registration system featuring secure
+                login, CRUD operations, student record management, and a
+                modern Windows Forms interface.
+              </ProjectDescription>
+            </article>
+          </div>
+        </div>
 
-            <div className="tags">
-              <span>React</span>
-              <span>TypeScript</span>
-              <span>Java</span>
-              <span>Spring Boot</span>
-              <span>AWS</span>
-            </div>
+        <div className="project-group">
+          <div className="project-group-heading">
+            <span>03</span>
+            <h3>Machine Learning</h3>
+          </div>
+          <div className="projects-grid">
+            <article className="project-card">
+              <h3>Vibration Signal Classification & Heart Disease Prediction</h3>
+              <div className="tags">
+                <span>Python</span><span>Machine Learning</span><span>Random Forest</span><span>Data Preprocessing</span><span>Kaggle</span>
+              </div>
+              <ProjectDescription>
+                Developed machine learning models using data preprocessing,
+                feature engineering, and classification techniques. Implemented
+                Random Forest for heart disease prediction with 86.67% accuracy.
+              </ProjectDescription>
+            </article>
+          </div>
+        </div>
 
-            <a href="#" className="project-link">
-              View Project →
-            </a>
+        <div className="project-group">
+          <div className="project-group-heading">
+            <span>04</span>
+            <h3>Web & Mini Projects</h3>
+          </div>
+          <div className="projects-grid">
+            <article className="project-card">
+              <h3>Quiz Application</h3>
+              <div className="tags">
+                <span>HTML</span><span>CSS</span><span>JavaScript</span>
+              </div>
+              <ProjectDescription>
+                Interactive responsive quiz application with multiple-choice
+                questions, answer validation, navigation, and customizable
+                styling.
+              </ProjectDescription>
+            </article>
+
+            <article className="project-card">
+              <h3>Weather Application</h3>
+              <div className="tags">
+                <span>JavaScript</span><span>HTML</span><span>CSS</span><span>Weather API</span>
+              </div>
+              <ProjectDescription>
+                Web application for displaying weather information using
+                real-time API data.
+              </ProjectDescription>
+            </article>
           </div>
         </div>
       </section>
@@ -332,7 +449,7 @@ function App() {
         </div>
 
         <div className="research-card">
-          <span className="research-label">ICIET 2026</span>
+          {/* <span className="research-label">ICIET 2026</span> */}
 
           <h3>
             Intelligent LTE Band Recommendation Using Crowdsourced
@@ -345,12 +462,40 @@ function App() {
             identify suitable LTE bands based on location and network
             conditions.
           </p>
-
+          {/* <h4>Research Highlights</h4>
+          <ul>
+            <li>Collected 1,000+ real-world LTE measurements.</li>
+            <li>Analysed RSRP, RSRQ, SINR, speed, LTE band, operator, location, and time.</li>
+            <li>Developed an Android application using Kotlin, Jetpack Compose, MVVM, and Hilt.</li>
+            <li>Used Supabase/PostgreSQL for research data management.</li>
+            <li>Integrated Qwen 3 32B via Groq Cloud for AI-assisted analysis.</li>
+            <li>
+              Used OpenStreetMap for location-based visualization.</li>
+          </ul> */}
+          
+          <div className="research-gallery">
+            <figure>
+              <img src={researchRecommend} alt="LTE band recommendation screen" />
+              <figcaption>Intelligent band recommendation</figcaption>
+            </figure>
+            <figure>
+              <img src={researchOptimizer} alt="LTE optimizer dashboard showing signal metrics" />
+              <figcaption>LTE optimizer dashboard</figcaption>
+            </figure>
+            <figure>
+              <img src={researchMap} alt="Map showing cellular tower coverage across Sri Lanka" />
+              <figcaption>Crowdsourced tower map</figcaption>
+            </figure>
+            <figure>
+              <img src={researchSpeedTest} alt="Mobile speed test screens showing download and upload results" />
+              <figcaption>Network speed testing</figcaption>
+            </figure>
+          </div>
           <div className="research-details">
-            <div>
+            {/* <div>
               <strong>Paper ID</strong>
               <span>237</span>
-            </div>
+            </div> */}
 
             <div>
               <strong>Platform</strong>
@@ -367,7 +512,7 @@ function App() {
               <span>Qwen + Groq</span>
             </div>
           </div>
-        </div>
+          </div>
       </section>
 
       {/* Education */}
@@ -395,8 +540,74 @@ function App() {
         </div>
       </section>
 
+      {/* Certificates */}
+      <section id="certificates" className="section">
+        <div className="section-title">
+          <p>CONTINUOUS LEARNING</p>
+          <h2>Certificates</h2>
+        </div>
+
+        <div className="certificates-grid">
+          <article className="certificate-card">
+            <h3>Web Design for Beginners</h3>
+            <p>Web Design</p>
+            <a href={webDesignCertificate} target="_blank" rel="noopener noreferrer">
+              View certificate
+            </a>
+          </article>
+
+          <article className="certificate-card">
+            <h3>Front-End Web Development</h3>
+            <p>Frontend Development</p>
+            <a href={frontendCertificate} target="_blank" rel="noopener noreferrer">
+              View certificate
+            </a>
+          </article>
+
+          <article className="certificate-card">
+            <h3>Python for Beginners</h3>
+            <p>Python</p>
+            <a href={pythonCertificate} target="_blank" rel="noopener noreferrer">
+              View certificate
+            </a>
+          </article>
+
+          <article className="certificate-card">
+            <h3>Cyber Security</h3>
+            <p>Cybersecurity</p>
+            <a href={cyberSecurityCertificate} target="_blank" rel="noopener noreferrer">
+              View certificate
+            </a>
+          </article>
+
+          <article className="certificate-card">
+            <h3>Access Control Concepts</h3>
+            <p>ISC2</p>
+            <a href={isc2AccessControlCertificate} target="_blank" rel="noopener noreferrer">
+              View certificate
+            </a>
+          </article>
+
+          <article className="certificate-card">
+            <h3>Network Security</h3>
+            <p>ISC2</p>
+            <a href={isc2NetworkSecurityCertificate} target="_blank" rel="noopener noreferrer">
+              View certificate
+            </a>
+          </article>
+
+          <article className="certificate-card">
+            <h3>Security Operations</h3>
+            <p>ISC2</p>
+            <a href={isc2SecurityOperationsCertificate} target="_blank" rel="noopener noreferrer">
+              View certificate
+            </a>
+          </article>
+        </div>
+      </section>
+
       {/* Contact */}
-      <section id="contact" className="section contact-section">
+      <section id="contact" className="section dark-section contact-section">
         <div className="section-title">
           <p>LET'S CONNECT</p>
           <h2>Contact Me</h2>
@@ -408,15 +619,15 @@ function App() {
         </p>
 
         <div className="contact-links">
-          <a href="mailto:your-email@example.com">
+          <a href="mailto:kgnipuniamanda513@gmail.com" target="_blank" rel="noopener noreferrer">
             Email
           </a>
 
-          <a href="#" target="_blank">
+          <a href="https://www.linkedin.com/in/nipuni-amanda/" target="_blank">
             LinkedIn
           </a>
 
-          <a href="#" target="_blank">
+          <a href="https://github.com/KGNAmanda" target="_blank">
             GitHub
           </a>
         </div>
